@@ -1,0 +1,4 @@
+[submodule "modules/godoctopus2"]
+	path = modules/godoctopus2
+	url = git@github.com:Octopus-Engine/robot_odyssey-godoctopus.git
+	branch = main
