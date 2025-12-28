@@ -1,0 +1,1 @@
+C:\Users\shpie\dev\godot\bin\godot.windows.editor.x86_64.exe --path C:\Users\shpie\dev\godot_octopus2 --export-release "Windows Desktop" C:\Users\shpie\dev\godot_octopus2\bin\export\godoctopus2.exe --headless

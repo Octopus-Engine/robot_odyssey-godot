@@ -1,0 +1,1 @@
+~/dev/robot_odyssey-godot/bin/godot.linuxbsd.editor.x86_64 --path /home/simon/godot_workspace/3d-experiments/ --export-debug "Linux/X11" ~/dev/robot_odyssey-godot/bin/game.x86_64 --headless
