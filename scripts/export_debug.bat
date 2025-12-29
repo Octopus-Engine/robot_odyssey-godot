@@ -1,1 +1,1 @@
-C:\Users\shpie\dev\robot_odyssey\robot_odyssey-godot\godot.windows.editor.x86_64.exe --path C:\Users\shpie\godot_workspace\3d-experiments --export-debug "Windows Desktop" C:\Users\shpie\dev\robot_odyssey\robot_odyssey-godot\bin\godoctopus2.exe --headless
+C:\Users\shpie\dev\robot_odyssey\robot_odyssey-godot\bin\godot.windows.editor.x86_64.exe --path C:\Users\shpie\godot_workspace\3d-experiments --export-debug "Windows Desktop" C:\Users\shpie\dev\robot_odyssey\robot_odyssey-godot\bin\godoctopus2.exe --headless
