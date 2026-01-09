@@ -1,1 +1,1 @@
-~/dev/godot/bin/godot.linuxbsd.editor.x86_64 --path /home/simon/godot_workspace/godot_octopus2/ --export-release "Linux/X11" ./bin/export/godoctopus2.x86_64 --headless
+~/dev/robot_odyssey-godot/bin/godot.linuxbsd.editor.x86_64 --path /home/simon/godot_workspace/3d-experiments/ --export-release "Linux/X11" ~/dev/robot_odyssey-godot/bin/game.x86_64 --headless
