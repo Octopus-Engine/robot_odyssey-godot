@@ -1,6 +1,12 @@
 cd modules/godoctopus2/src/octopus2/
 git gui
+git push
+cd ../nwfc/
+git gui
+git push
 cd ../..
 git gui
+git push
 cd ../..
 git gui
+git push
