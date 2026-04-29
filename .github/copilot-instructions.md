@@ -30,8 +30,8 @@ The engine uses **SCons** (Python-based build system).
 ### Linux
 
 ```bash
-# Build the editor (debug)
-scons platform=linuxbsd target=editor debug=yes debug_symbols=yes
+# Build the editor (debug) this will produce a build.log in the root directory with the full build output
+./scripts/build.sh
 
 # Export template (release)
 scons platform=linuxbsd target=template_release

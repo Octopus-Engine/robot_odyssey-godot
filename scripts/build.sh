@@ -1,0 +1,1 @@
+scons platform=linuxbsd target=editor debug=yes debug_symbols=yes tests=yes
