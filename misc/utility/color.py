@@ -15,11 +15,18 @@ CLICOLOR_FORCE: Final[bool] = bool(os.environ.get("CLICOLOR_FORCE"))
 STDOUT_TTY: Final[bool] = bool(sys.stdout.isatty())
 STDERR_TTY: Final[bool] = bool(sys.stderr.isatty())
 
+# For compiler flags, use a deterministic decision that doesn't depend on TTY status.
+# This ensures the build signature remains consistent regardless of output redirection.
+# TTY status changes between invocations (interactive vs redirected), but compiler color
+# flags should not affect the build signature since they only affect output formatting,
+# not the generated binaries. Use only stable environment variables for this decision.
+STDERR_DETERMINISTIC: Final[bool] = False if NO_COLOR else CLICOLOR_FORCE or IS_CI
 
 _STDOUT_ORIGINAL: Final[bool] = False if NO_COLOR else CLICOLOR_FORCE or IS_CI or STDOUT_TTY
 _STDERR_ORIGINAL: Final[bool] = False if NO_COLOR else CLICOLOR_FORCE or IS_CI or STDERR_TTY
 _stdout_override: bool = _STDOUT_ORIGINAL
 _stderr_override: bool = _STDERR_ORIGINAL
+_stderr_deterministic_override: bool = STDERR_DETERMINISTIC
 
 
 def is_stdout_color() -> bool:
@@ -28,6 +35,23 @@ def is_stdout_color() -> bool:
 
 def is_stderr_color() -> bool:
     return _stderr_override
+
+
+def is_stderr_color_deterministic() -> bool:
+    """
+    Returns color support for stderr based on environment variables only.
+    
+    This is used for compiler flags which should produce consistent build signatures
+    regardless of whether output is redirected. TTY-dependent decisions would cause
+    spurious rebuilds when changing between interactive and redirected invocations.
+    
+    Returns True if colors should be enabled for compiler diagnostics:
+    - Disabled if NO_COLOR is set
+    - Enabled if CLICOLOR_FORCE is set
+    - Enabled in CI environments
+    - Disabled otherwise (deterministic across invocations)
+    """
+    return _stderr_deterministic_override
 
 
 def force_stdout_color(value: bool) -> None:

@@ -58,7 +58,7 @@ import gles3_builders
 import glsl_builders
 import methods
 import scu_builders
-from misc.utility.color import is_stderr_color, print_error, print_info, print_warning
+from misc.utility.color import is_stderr_color, is_stderr_color_deterministic, print_error, print_info, print_warning
 from platform_methods import architecture_aliases, architectures, compatibility_platform_aliases
 
 if ARGUMENTS.get("target", "editor") == "editor":
@@ -744,11 +744,13 @@ elif env["arch"] == "x86_32":
         # `-mstackrealign` is needed for it to work.
         env.Append(CCFLAGS=["-msse2", "-mfpmath=sse", "-mstackrealign"])
 
-# Explicitly specify colored output.
+# Explicitly specify colored output for compiler diagnostics.
+# Use a deterministic color decision (based on environment variables only) to ensure
+# consistent build signatures regardless of whether output is redirected.
 if methods.using_gcc(env):
-    env.AppendUnique(CCFLAGS=["-fdiagnostics-color" if is_stderr_color() else "-fno-diagnostics-color"])
+    env.AppendUnique(CCFLAGS=["-fdiagnostics-color" if is_stderr_color_deterministic() else "-fno-diagnostics-color"])
 elif methods.using_clang(env) or methods.using_emcc(env):
-    env.AppendUnique(CCFLAGS=["-fcolor-diagnostics" if is_stderr_color() else "-fno-color-diagnostics"])
+    env.AppendUnique(CCFLAGS=["-fcolor-diagnostics" if is_stderr_color_deterministic() else "-fno-color-diagnostics"])
     if sys.platform == "win32":
         env.AppendUnique(CCFLAGS=["-fansi-escape-codes"])
 
