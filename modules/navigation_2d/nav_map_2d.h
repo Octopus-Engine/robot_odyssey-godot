@@ -37,7 +37,8 @@
 
 #include "core/math/math_defs.h"
 #include "core/object/worker_thread_pool.h"
-#include "servers/navigation/navigation_globals.h"
+#include "core/os/rw_lock.h"
+#include "servers/navigation_2d/navigation_constants_2d.h"
 
 #include <KdTree2d.h>
 #include <RVOSimulator2d.h>

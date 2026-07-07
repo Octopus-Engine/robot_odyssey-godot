@@ -30,11 +30,11 @@
 
 #include "nav_region_3d.h"
 
-#include "nav_map_3d.h"
-
 #include "3d/nav_mesh_queries_3d.h"
 #include "3d/nav_region_builder_3d.h"
 #include "3d/nav_region_iteration_3d.h"
+#include "nav_map_3d.h"
+
 #include "core/config/project_settings.h"
 
 using namespace Nav3D;
@@ -356,7 +356,7 @@ bool NavRegion3D::get_use_async_iterations() const {
 
 NavRegion3D::NavRegion3D() :
 		sync_dirty_request_list_element(this), async_list_element(this) {
-	type = NavigationUtilities::PathSegmentType::PATH_SEGMENT_TYPE_REGION;
+	type = NavigationEnums3D::PathSegmentType::PATH_SEGMENT_TYPE_REGION;
 	iteration_build.region = this;
 	iteration.instantiate();
 
