@@ -21,5 +21,11 @@ if env["scu_build"]:
 else:
     env.add_source_files(tests_obj, glob.glob("*.cpp") + force_link_sources)
 
+env.Append(CPPPATH="../modules/godoctopus2/src/octopus2/src/octopus/src/")
+env.Append(CPPPATH="../modules/godoctopus2/src/nwfc/src/nwfc/src/")
+env.Append(CPPPATH="../modules/godoctopus2/src/")
+env.Append(CPPPATH="../modules/godoctopus2/smart_list/src")
+env.Append(CPPPATH="../modules/godoctopus2/")
+
 lib = env.add_library("tests", tests_obj)
 env.Prepend(LIBS=[lib])
